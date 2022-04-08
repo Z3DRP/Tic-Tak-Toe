@@ -3,6 +3,8 @@
 @{
     ViewData["Title"] = "Tic Tac Toe";
 }
+<!--Code below for testvalue -->
+<a asp-action="TestAction"><b>Call Action</b></a>
 
 @if (Model.IsGameOver)
 {
@@ -23,6 +25,7 @@ else
         {
             @if (cell.IsBlank)
             {
+                <!--Cell is available and can be selected-->
                 <button type="submit" name="Selected.Id" value="@cell.Id"
                         class="btn btn-outline-dark">
                     &nbsp;
@@ -30,6 +33,7 @@ else
             }
             else
             {
+                <!-- cell has already been marked as X or O, get marked-->
                 <button class="btn btn-outline-dark" disabled>@cell.Mark</button>
             }
 

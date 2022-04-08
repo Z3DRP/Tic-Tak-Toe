@@ -46,5 +46,24 @@ namespace TicTacToe.Controllers
 
             return RedirectToAction("Index");
         }
+        [HttpPost]
+        public IActionResult TestAction(TicTacToeViewModel vm)
+        {
+            int testValue = vm.TestValue + 1;
+
+            return RedirectToAction("TestAction", new { id = testValue });
+        }
+        // test controllers
+        // pattern from startup "{controller=Home}/{action=Index}/{id?}"
+        //Note home is the default controller but this pattern works with all controllers
+        // like wise index is the defauilt action but this pattern works with all acitons
+        // parameters must be called id
+        [HttpGet]
+        public IActionResult TestAction(int id) // id is defined in startup as the optional parameter
+        {
+            TicTacToeViewModel vm = new TicTacToeViewModel();
+            vm.TestValue = id; // new property added to the view model
+            return View(vm);
+        }
     }
 }

@@ -1,0 +1,20 @@
+﻿@model TicTacToeViewModel
+@{
+    ViewData["Title"] = "TestAction";
+}
+
+<h1>TestAction</h1>
+
+<form asp-action="TestAction" method="post">
+    <!--Add a hidden field to store data-->
+    @Model.IsGameOver = true;
+    <input type="hidden" asp-for="TestValue" />
+    <input type="hidden" asp-for="IsGameOver" />
+
+    <div class="board-row">
+        <!--Display a sumbit button containing and displaying the TestValue-->
+        <button type="submit" name="submit" value="@Model.TestValue" class="btn btn-outline-dark">
+            @Model.TestValue
+        </button>
+    </div>
+</form>
