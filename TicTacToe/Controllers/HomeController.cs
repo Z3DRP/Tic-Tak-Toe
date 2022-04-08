@@ -61,9 +61,23 @@ namespace TicTacToe.Controllers
         [HttpGet]
         public IActionResult TestAction(int id) // id is defined in startup as the optional parameter
         {
+            //Route parameter example:
+            // .../Home/TestAction/6    6 will get bound to the id parameter, so id = 6
+            // Query String example:
+            // .../Home/TestAction?id=6 6 will get bound to the id parameter
+            //.../Home/TestAction?Value=6   Since value is not the paramter name, no binding id=0
             TicTacToeViewModel vm = new TicTacToeViewModel();
             vm.TestValue = id; // new property added to the view model
             return View(vm);
         }
+        // This code below is exmaple of how to use value as parameter in query string 
+        // but would still throw a error because in the route the pararmeter is still named 'id'
+        //[HttpGet]
+        //public IActionResult TestAction(int value)
+        //{
+        //    TicTacToeViewModel vm = new TicTacToeViewModel();
+        //    vm.TestValue = value; // new property added to the view model
+        //    return View(vm);
+        //}
     }
 }
